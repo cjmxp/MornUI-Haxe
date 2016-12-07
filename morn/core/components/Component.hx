@@ -406,7 +406,7 @@ class Component extends Sprite {
 
     /**显示边框*/
 
-    public function showBorder(color:Int = 0xff0000):Void {
+    public function showBorder(color:UInt = 0xff0000):Void {
         removeChildByName("border");
         var border:Shape = new Shape();
         border.name = "border";

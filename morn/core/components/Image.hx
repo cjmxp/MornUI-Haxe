@@ -7,7 +7,7 @@ class Image extends Component {
     private var _bitmap:AutoBitmap;
     private var _url:String;
     private var _setBitmapData:Handler;
-    public function new(url:String="") {
+    public function new(url:String=null) {
         super();
         _url = url;
         _setBitmapData = new Handler(setBitmapData.bind(_,_));
@@ -25,7 +25,7 @@ class Image extends Component {
     private function set_url(value:String):String {
         if (_url != value) {
             _url = value;
-            if (value!="") {
+            if (value!="" && _url!=null) {
                 if (App.asset.hasAsset(_url)) {
                     bitmapData = App.asset.getBitmapData(_url);
                 } else {

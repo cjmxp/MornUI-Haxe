@@ -7,4 +7,5 @@ class ObjectUtils {
     public static function gray(traget:DisplayObject, isGray:Bool = true):Void {
 
     }
+
 }

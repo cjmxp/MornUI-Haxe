@@ -40,7 +40,7 @@ class AutoBitmap extends Bitmap {
     /**高度(显示时四舍五入)*/
     @:getter(height)
     private function get_height():Float {
-        return Math.isNaN(_height) ? (super.bitmapData!=null ? super.bitmapData.height : super.height) : _height;
+        return Math.isNaN(_height) ? (this.bitmapData!=null ? this.bitmapData.height : super.height) : _height;
     }
     @:setter(height)
     private function set_height(value:Float):Void {
@@ -52,7 +52,7 @@ class AutoBitmap extends Bitmap {
     @:setter(bitmapData)
     private function set_bitmapData(value:BitmapData):Void {
         if (value!=null) {
-            clips = [];
+            clips = [value];
         } else {
             disposeTempBitmapdata();
             _source = null;
@@ -62,7 +62,7 @@ class AutoBitmap extends Bitmap {
     }
     @:setter(smoothing)
     private function set_smoothing(value:Bool):Void {
-        this.smoothing = value;
+        super.smoothing = value;
         _smoothing = value;
     }
     #else
@@ -90,7 +90,7 @@ class AutoBitmap extends Bitmap {
     }
     private override function set_bitmapData(value:BitmapData):BitmapData {
         if (value!=null) {
-            clips = [];
+            clips = [value];
         } else {
             disposeTempBitmapdata();
             _source = null;

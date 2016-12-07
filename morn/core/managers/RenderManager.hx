@@ -4,7 +4,7 @@ class RenderManager {
     public function new() {
     }
     public function callLater(fn:Handler):Void{
-
+        fn.Function();
     }
     public function exeCallLater(fn:Handler):Void{
 
