@@ -1,4 +1,5 @@
 package ;
+import haxe.Timer;
 import openfl.display.StageAlign;
 import openfl.display.StageScaleMode;
 import morn.core.managers.LangManager;
@@ -88,10 +89,14 @@ class App {
         stage.align = StageAlign.TOP_LEFT;
         stage.stageFocusRect = false;
         stage.tabChildren = false;
-
         stage.addChild(dialog);
         stage.addChild(tip);
 
 
     }
+    public static function getTimer():Int
+    {
+        return Math.round(Timer.stamp()*1000);
+    }
+
 }

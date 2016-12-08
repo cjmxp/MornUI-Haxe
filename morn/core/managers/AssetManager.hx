@@ -1,4 +1,5 @@
 package morn.core.managers;
+import morn.core.utils.BitmapUtils;
 import openfl.Assets;
 import openfl.display.BitmapData;
 class AssetManager {
@@ -18,17 +19,26 @@ class AssetManager {
         return null;
     }
     /**获取位图数据*/
-    public function getBitmapData(url:String):BitmapData
+    public function getBitmapData(url:String, useCache:Bool = true):BitmapData
     {
        // #if flash
 
         //#else
-        return Assets.getBitmapData(url);
+        return Assets.getBitmapData(url,useCache);
        // #end
 
     }
     public function disposeBitmapData(url:String):Void
     {
 
+    }
+    /**获取切片资源*/
+    public function getClips(name:String, xNum:Int, yNum:Int, cache:Bool = true, source:BitmapData = null):Array<BitmapData> {
+        var clips:Array<BitmapData>=[];
+        if (source!=null) {
+            clips = BitmapUtils.createClips(source, xNum, yNum);
+
+        }
+        return clips;
     }
 }

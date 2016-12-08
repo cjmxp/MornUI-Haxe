@@ -188,6 +188,14 @@ class AutoBitmap extends Bitmap {
 
     /**销毁*/
     public function dispose():Void {
+        if (_clips!=null) {
+            var i:Int=_clips.length - 1;
+            while(i>0) {
+                _clips[i].dispose();
+                i--;
+            }
+            _clips=[];
+        }
         _sizeGrid = null;
         _source = null;
         _clips = null;

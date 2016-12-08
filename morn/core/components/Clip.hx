@@ -24,9 +24,9 @@ class Clip extends Component {
         super();
         _clipX = clipX;
         _clipY = clipY;
+        this._changeClip = new Handler(changeClip.bind());
+        this._loop = new Handler(loop.bind());
         this.url = url;
-        this._changeClip=new Handler(changeClip.bind());
-        this._loop==new Handler(loop.bind());
     }
     private override function createChildren():Void {
         _bitmap = new AutoBitmap();
@@ -130,32 +130,54 @@ class Clip extends Component {
             clips = App.asset.getClips(url, _clipX, _clipY, true, isLoad ? bmd.clone() : bmd);
         }
     }
+    /**源位图数据*/
+    public var clips(get,set):Array<BitmapData>;
+    private function get_clips():Array<BitmapData> {
+        return _bitmap.clips;
+    }
+    private function set_clips(value:Array<BitmapData>):Array<BitmapData> {
+        if (value !=null) {
+            _bitmap.clips = value;
+            _contentWidth = _bitmap.width;
+            _contentHeight = _bitmap.height;
+        }
+        sendEvent(UIEvent.IMAGE_LOADED);
+        return value;
+    }
     #if flash
     @:setter(width)
-    private function set_width(value:Float):Void {
+    private override function set_width(value:Float):Void {
         super.width = value;
         _bitmap.width = value;
     }
     @:setter(height)
-    public function set_height(value:Float):Void {
+    private override function set_height(value:Float):Void {
         super.height = value;
         _bitmap.height = value;
     }
     #else
-
-    @:setter(width)
     private override function set_width(value:Float):Float {
         super.width = value;
         _bitmap.width = value;
         return value;
     }
-    @:setter(height)
     public override function set_height(value:Float):Float {
         super.height = value;
         _bitmap.height = value;
         return value;
     }
     #end
+
+    private override function set_dataSource(value:Dynamic):Dynamic {
+        _dataSource = value;
+        if (Std.is(value,Int) || Std.is(value,String)) {
+            frame = Std.parseInt(Std.string(value));
+        } else {
+            super.dataSource = value;
+        }
+        return value;
+    }
+
     public override function commitMeasure():Void {
         exeCallLater(_changeClip);
     }
@@ -253,7 +275,7 @@ class Clip extends Component {
     public function play():Void {
             _isPlaying = true;
             frame = _bitmap.index;
-            App.timer.starTimer(_interval, _loop);
+            App.timer.doLoop(_interval, _loop);
     }
     /**停止播放*/
     public function stop():Void {
@@ -282,16 +304,7 @@ class Clip extends Component {
         _complete = complete;
         gotoAndPlay(_from);
     }
-    @:setter(dataSource)
-    private override function set_dataSource(value:Dynamic):Dynamic {
-        _dataSource = value;
-        if (Std.is(value,Int) || Std.is(value,String)) {
-            frame = Std.parseInt(Std.string(value));
-        } else {
-            super.dataSource = value;
-        }
-        return value;
-    }
+
     /**是否对位图进行平滑处理*/
     public var smoothing(get,set):Bool;
     private function get_smoothing():Bool {
@@ -327,10 +340,6 @@ class Clip extends Component {
     /**销毁资源
 	* @param	clearFromLoader 是否同时删除加载缓存*/
     public function destroy(clearFromLoader:Bool = false):Void {
-        App.asset.destroyClips(_url);
-        if (clearFromLoader) {
-            App.loader.clearResLoaded(_url);
-        }
         dispose();
     }
     /**销毁*/
