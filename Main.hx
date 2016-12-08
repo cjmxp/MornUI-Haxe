@@ -1,7 +1,8 @@
 package ;
-
-import morn.core.components.Clip;
+import morn.App;
+import morn.core.components.Button;
 import openfl.display.Sprite;
+
 class Main extends Sprite{
     public function new() {
         super();
@@ -9,10 +10,8 @@ class Main extends Sprite{
         new debugger.Local(true);
         #end
         App.Init(stage);
-        var img:Clip=new Clip();
-        img.url="assets/select.png";
-        img.clipX=2;
-        img.clipY=2;
+        var img:Button=new Button("assets/button.png","button");
+        img.setSize(60,30);
         addChild(img);
     }
 }

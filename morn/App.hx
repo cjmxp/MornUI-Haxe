@@ -1,4 +1,4 @@
-package ;
+package morn;
 import haxe.Timer;
 import openfl.display.StageAlign;
 import openfl.display.StageScaleMode;

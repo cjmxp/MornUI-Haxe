@@ -2,14 +2,19 @@ package morn.core.utils;
 class StringUtils {
     public function new() {
     }
-    public static function fillArray(arr:Array<Int>,str:String):Array<Int>
+    public static function fillArray(arr:Dynamic,str:String):Dynamic
     {
-        var temp:Array<Int> = arr.concat([]);
+        var temp:Dynamic = arr.concat([]);
+        temp.length=arr.length;
         if(str!="" && str!=null){
             var a:Array<String> = str.split(",");
             var n:Int = Std.int(Math.min(temp.length, a.length));
             for (i in 0...n) {
-                temp[i] = Std.parseInt(a[i]);
+                if (Std.is(temp[i],Int)){
+                    temp[i] = Std.parseInt(a[i]);
+                }else if (Std.is(temp[i],Float)){
+                    temp[i] = Std.parseFloat(a[i]);
+                }
             }
         }
         return temp;

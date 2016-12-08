@@ -33,11 +33,13 @@ class AssetManager {
 
     }
     /**获取切片资源*/
-    public function getClips(name:String, xNum:Int, yNum:Int, cache:Bool = true, source:BitmapData = null):Array<BitmapData> {
+    public function getClips(url:String, xNum:Int, yNum:Int, cache:Bool = true, source:BitmapData = null):Array<BitmapData> {
         var clips:Array<BitmapData>=[];
-        if (source!=null) {
+        if(hasAsset(url)){
+            if (source==null) {
+                source=getBitmapData(url);
+            }
             clips = BitmapUtils.createClips(source, xNum, yNum);
-
         }
         return clips;
     }
