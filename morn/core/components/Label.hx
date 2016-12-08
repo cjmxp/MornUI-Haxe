@@ -8,16 +8,15 @@ import openfl.text.TextFieldAutoSize;
 import openfl.text.TextFormat;
 import openfl.text.TextField;
 class Label extends Component {
-    private static var reg:EReg = new EReg("\\n","g");
-    private var _textField:TextField;
-    private var _format:TextFormat;
+    private var _textField:TextField = null;
+    private var _format:TextFormat = null;
     private var _text:String = "";
-    private var _isHtml:Bool;
-    private var _stroke:String;
+    private var _isHtml:Bool = false;
+    private var _stroke:String = null;
     private var _skin:String = null;
-    private var _bitmap:AutoBitmap;
+    private var _bitmap:AutoBitmap = null;
     private var _margin:Array<Int> = App.labelMargin;
-    private var _changeText:Handler;
+    private var _changeText:Handler = null;
     public function new(text:String = "", skin:String = null) {
         super();
         _changeText=new Handler(changeText.bind());

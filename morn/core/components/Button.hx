@@ -6,20 +6,20 @@ import openfl.events.MouseEvent;
 import morn.core.handlers.Handler;
 class Button extends Component {
     private static var stateMap:Dynamic = {rollOver: 1, rollOut: 0, mouseDown: 2, mouseUp: 1, selected: 2};
-    private var _bitmap:AutoBitmap;
-    private var _btnLabel:Label;
+    private var _bitmap:AutoBitmap = null;
+    private var _btnLabel:Label = null;
     private var _labelColors:Array<UInt> = App.buttonLabelColors;
     private var _labelMargin:Array<Int> = App.buttonLabelMargin;
     private var _state:Int = 0;
-    private var _toggle:Bool;
-    private var _selected:Bool;
-    private var _skin:String;
+    private var _toggle:Bool = false;
+    private var _selected:Bool = false;
+    private var _skin:String = null;
     private var _autoSize:Bool = true;
     private var _stateNum:Int = App.buttonStateNum;
-    private var _clickHandler:Handler;
-    private var _changeState:Handler;
-    private var _changeClips:Handler;
-    private var _changeLabelSize:Handler;
+    private var _clickHandler:Handler = null;
+    private var _changeState:Handler = null;
+    private var _changeClips:Handler = null;
+    private var _changeLabelSize:Handler= null;
 
     public function new(skin:String = null, label:String = "") {
         super();

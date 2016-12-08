@@ -4,9 +4,9 @@ import morn.core.events.UIEvent;
 import openfl.display.BitmapData;
 import morn.core.handlers.Handler;
 class Image extends Component {
-    private var _bitmap:AutoBitmap;
-    private var _url:String;
-    private var _setBitmapData:Handler;
+    private var _bitmap:AutoBitmap = null;
+    private var _url:String = null;
+    private var _setBitmapData:Handler = null;
     public function new(url:String=null) {
         super();
         _url = url;

@@ -6,20 +6,20 @@ import openfl.events.Event;
 import morn.core.handlers.Handler;
 class Clip extends Component {
     private var _autoStopAtRemoved:Bool = true;
-    private var _bitmap:AutoBitmap;
+    private var _bitmap:AutoBitmap = null;
     private var _clipX:Int = 1;
     private var _clipY:Int = 1;
     private var _clipWidth:Float = Math.NaN;
     private var _clipHeight:Float = Math.NaN;
-    private var _url:String;
-    private var _autoPlay:Bool;
+    private var _url:String = null;
+    private var _autoPlay:Bool = false;
     private var _interval:Int = App.MOVIE_INTERVAL;
     private var _from:Int = -1;
     private var _to:Int = -1;
-    private var _complete:Handler;
-    private var _isPlaying:Bool;
-    private var _changeClip:Handler;
-    private var _loop:Handler;
+    private var _complete:Handler = null;
+    private var _isPlaying:Bool = null;
+    private var _changeClip:Handler = null;
+    private var _loop:Handler = null;
     public function new(url:String = null, clipX:Int = 1, clipY:Int = 1) {
         super();
         _clipX = clipX;

@@ -7,14 +7,14 @@ import openfl.display.Bitmap;
 class AutoBitmap extends Bitmap {
     private var _width:Float = Math.NaN;
     private var _height:Float = Math.NaN;
-    private var _sizeGrid:Array<Int>;
+    private var _sizeGrid:Array<Int> = null;
     private var _source:Array<BitmapData>;
     private var _clips:Array<BitmapData>;
     private var _index:Int = 0;
     private var _smoothing:Bool = App.smoothing;
     private var _anchorX:Float = Math.NaN;
     private var _anchorY:Float = Math.NaN;
-    private var _changeSize:Handler;
+    private var _changeSize:Handler = null;
     public function new() {
         super();
         _changeSize=new Handler(changeSize.bind());
