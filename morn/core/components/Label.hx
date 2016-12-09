@@ -300,8 +300,8 @@ class Label extends Component {
         return value;
     }
     /**文本控件实体*/
-    @:getter(textField)
-    public function get_textField():TextField {
+    public var textField(get,never):TextField;
+    private function get_textField():TextField {
         return _textField;
     }
     /**将指定的字符串追加到文本的末尾*/

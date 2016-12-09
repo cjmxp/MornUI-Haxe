@@ -4,7 +4,7 @@ class StringUtils {
     }
     public static function fillArray(arr:Dynamic,str:String):Dynamic
     {
-        var temp:Dynamic = arr.concat([]);
+        var temp:Dynamic = arr.copy();
         temp.length=arr.length;
         if(str!="" && str!=null){
             var a:Array<String> = str.split(",");

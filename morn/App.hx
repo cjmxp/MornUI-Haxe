@@ -39,7 +39,7 @@ class App {
     public static var buttonLabelMargin(default, never):Array<Int> = [0, 0, 0, 0];
     //-----------------LinkButton-----------------
     /**连接标签颜色[upColor,overColor,downColor,disableColor]*/
-    public static var linkLabelColors(default, never):Array<Int> = [0x0080C0, 0xFF8000, 0x800000, 0xC0C0C0];
+    public static var linkLabelColors(default, never):Array<UInt> = [0x0080C0, 0xFF8000, 0x800000, 0xC0C0C0];
     //-----------------ComboBox-----------------
     /**下拉框项颜色[overBgColor,overLabelColor,outLabelColor,borderColor,bgColor]*/
     public static var comboBoxItemColors(default, never):Array<UInt> = [0x5e95b6, 0xffffff, 0x000000, 0x8fa4b1, 0xffffff];
