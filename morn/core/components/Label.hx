@@ -388,6 +388,16 @@ class Label extends Component {
         return value;
     }
     #end
+    public var textWidth(get,never):Float;
+    public function get_textWidth():Float
+    {
+        return _textField!=null?_textField.textWidth:0;
+    }
+    public var textHeight(get,never):Float;
+    public function get_textHeight():Float
+    {
+        return _textField!=null?_textField.textHeight:0;
+    }
     override public function set_dataSource(value:Dynamic):Dynamic {
         _dataSource = value;
         if (Std.is(value,Float)|| Std.is(value,String)) {
