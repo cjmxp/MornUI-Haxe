@@ -13,7 +13,7 @@ class Label extends Component {
     private var _text:String = "";
     private var _isHtml:Bool = false;
     private var _stroke:String = null;
-    private var _skin:String = null;
+    private var _skin:String = "";
     private var _bitmap:AutoBitmap = null;
     private var _margin:Array<Int> = App.labelMargin;
     private var _changeText:Handler = null;
@@ -314,7 +314,7 @@ class Label extends Component {
         return _skin;
     }
     private function set_skin(value:String):String {
-        if (_skin != value) {
+        if (_skin != value && value!=null) {
             if(App.asset.hasAsset(value)){
                 _skin = value;
                 _bitmap.bitmapData = App.asset.getBitmapData(value);

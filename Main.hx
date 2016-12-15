@@ -1,8 +1,7 @@
 package ;
+import morn.core.components.Button;
 import morn.App;
-import morn.core.components.TextInput;
 import openfl.display.Sprite;
-
 class Main extends Sprite{
     public function new() {
         super();
@@ -10,7 +9,9 @@ class Main extends Sprite{
         new debugger.Local(true);
         #end
         App.Init(stage);
-        var img:TextInput=new TextInput("button","assets/textinput.png");
-        addChild(img);
+        var box:View_Test=new View_Test();
+        box.showBorder();
+        trace(box.width,box.height);
+        addChild(box);
     }
 }

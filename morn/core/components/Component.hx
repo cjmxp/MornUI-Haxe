@@ -8,7 +8,7 @@ import openfl.events.Event;
 import morn.core.handlers.Handler;
 import openfl.display.DisplayObject;
 import openfl.display.Sprite;
-class Component extends Sprite {
+class Component extends Sprite implements IComponent {
     private var _width:Float = Math.NaN;
     private var _height:Float = Math.NaN;
     private var _contentWidth:Float = 0.0;
@@ -145,7 +145,7 @@ class Component extends Sprite {
     @:getter(width)
     private function get_width():Float {
         exeCallLater(_resetPosition);
-        if (_width != 0) {
+        if (!Math.isNaN(_width)) {
             return _width;
         } else if (_contentWidth != 0) {
             return _contentWidth;
@@ -247,7 +247,7 @@ class Component extends Sprite {
 
     private override function get_width():Float {
         exeCallLater(_resetPosition);
-        if (_width != 0) {
+        if (!Math.isNaN(_width)) {
             return _width;
         } else if (_contentWidth != 0) {
             return _contentWidth;
@@ -256,7 +256,6 @@ class Component extends Sprite {
         }
         return 0;
     }
-
     private override function set_width(value:Float):Float {
         if (_width != value) {
             _width = value;

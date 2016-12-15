@@ -4,7 +4,7 @@ import openfl.events.Event;
 import morn.core.utils.ObjectUtils;
 import openfl.events.MouseEvent;
 import morn.core.handlers.Handler;
-class Button extends Component {
+class Button extends Component implements ISelect {
     private static var stateMap:Dynamic = {rollOver: 1, rollOut: 0, mouseDown: 2, mouseUp: 1, selected: 2};
     private var _bitmap:AutoBitmap = null;
     private var _btnLabel:Label = null;
@@ -13,7 +13,7 @@ class Button extends Component {
     private var _state:Int = 0;
     private var _toggle:Bool = false;
     private var _selected:Bool = false;
-    private var _skin:String = null;
+    private var _skin:String = "";
     private var _autoSize:Bool = true;
     private var _stateNum:Int = App.buttonStateNum;
     private var _clickHandler:Handler = null;
@@ -79,7 +79,7 @@ class Button extends Component {
         return _skin;
     }
     private function set_skin(value:String):String {
-        if (_skin != value) {
+        if (_skin != value && value!=null) {
             _skin = value;
             callLater(_changeClips);
             callLater(_changeLabelSize);

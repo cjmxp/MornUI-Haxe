@@ -7,7 +7,8 @@ class TextInput extends Label {
         super(text, skin);
     }
     private override function initialize():Void {
-    super.initialize();
+        super.initialize();
+        trace(Type.resolveClass("Label"));
         mouseChildren = true;
         width = 128;
         height = 22;

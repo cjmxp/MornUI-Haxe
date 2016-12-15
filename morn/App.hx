@@ -1,4 +1,9 @@
 package morn;
+import morn.core.components.Label;
+import morn.core.components.Image;
+import morn.core.components.Button;
+import morn.core.components.View;
+import openfl.utils.Dictionary;
 import haxe.Timer;
 import openfl.display.StageAlign;
 import openfl.display.StageScaleMode;
@@ -11,16 +16,15 @@ import morn.core.managers.LoaderManager;
 import morn.core.managers.AssetManager;
 import openfl.display.Stage;
 class App {
-
     /**默认FPS*/
-    public static var FPS(default, never):Int = 60;
+    public static var FPS:Int = 60;
     /**默认九宫格信息[左边距,上边距,右边距,下边距,是否重复填充]*/
     public static var defaultSizeGrid(default, never):Array<Int> = [4, 4, 4, 4, 0];
     //-----------------文本-----------------
     /**字体名称*/
-    public static var fontName(default, never):String = "Arial";
+    public static var fontName:String = "Arial";
     /**字体大小*/
-    public static var fontSize(default, never):Int = 12;
+    public static var fontSize:Int = 12;
     /**是否是嵌入字体*/
     public static var embedFonts(default, never):Bool = false;
     //-----------------Label-----------------

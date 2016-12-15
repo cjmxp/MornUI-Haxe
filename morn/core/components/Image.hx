@@ -43,7 +43,9 @@ class Image extends Component {
         return _url;
     }
     private function set_skin(value:String):String {
-        url = value;
+        if(_url!=value && value!=null){
+            url = value;
+        }
         return value;
     }
     /**源位图数据*/

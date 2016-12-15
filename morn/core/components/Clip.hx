@@ -4,7 +4,7 @@ import morn.core.utils.StringUtils;
 import openfl.display.BitmapData;
 import openfl.events.Event;
 import morn.core.handlers.Handler;
-class Clip extends Component {
+class Clip extends Component implements IClip {
     private var _autoStopAtRemoved:Bool = true;
     private var _bitmap:AutoBitmap = null;
     private var _clipX:Int = 1;

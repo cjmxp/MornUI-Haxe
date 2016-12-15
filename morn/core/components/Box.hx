@@ -1,6 +1,6 @@
 package morn.core.components;
 import openfl.display.DisplayObject;
-class Box extends Component {
+class Box extends Component implements IBox {
     public function new() {
         super();
     }
