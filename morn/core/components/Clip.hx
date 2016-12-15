@@ -17,7 +17,7 @@ class Clip extends Component implements IClip {
     private var _from:Int = -1;
     private var _to:Int = -1;
     private var _complete:Handler = null;
-    private var _isPlaying:Bool = null;
+    private var _isPlaying:Bool = false;
     private var _changeClip:Handler = null;
     private var _loop:Handler = null;
     public function new(url:String = null, clipX:Int = 1, clipY:Int = 1) {
