@@ -15,7 +15,6 @@ class CheckBox extends Button {
     }
     private override  function changeLabelSize():Void {
         exeCallLater(_changeClips);
-        trace(_bitmap.height ,_btnLabel.height);
         _btnLabel.x = _bitmap.width + _labelMargin[0];
         _btnLabel.y = (_bitmap.height - _btnLabel.textHeight) * 0.5 + _labelMargin[1];
     }
