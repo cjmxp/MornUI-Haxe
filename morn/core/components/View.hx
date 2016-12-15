@@ -4,7 +4,7 @@ class View extends Box {
     public static var uiMap:Dynamic = {};
     //private static var uiClassMap:Dynamic = {"Box": Box, "Button": Button, "CheckBox": CheckBox, "Clip": Clip, "ComboBox": ComboBox, "Component": Component, "Container": Container, "FrameClip": FrameClip, "HScrollBar": HScrollBar, "HSlider": HSlider, "Image": Image, "Label": Label, "LinkButton": LinkButton, "List": List, "Panel": Panel, "ProgressBar": ProgressBar, "RadioButton": RadioButton, "RadioGroup": RadioGroup, "ScrollBar": ScrollBar, "Slider": Slider, "Tab": Tab, "TextArea": TextArea, "TextInput": TextInput, "View": View, "ViewStack": ViewStack, "VScrollBar": VScrollBar, "VSlider": VSlider, "HBox": HBox, "VBox": VBox, "Tree": Tree};
     /**标准UI控件*/
-    private static var uiClassMap(default, never):Dynamic={View:View,Button:Button,Image:Image,Label:Label,CheckBox:CheckBox};
+    private static var uiClassMap(default, never):Dynamic={Button:Button,Image:Image,Label:Label,CheckBox:CheckBox};
     private static var viewClassMap:Dynamic = {};
     public function new() {
         super();

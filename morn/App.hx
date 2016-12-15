@@ -1,4 +1,5 @@
 package morn;
+import morn.core.managers.DragManager;
 import morn.core.components.Label;
 import morn.core.components.Image;
 import morn.core.components.Button;
@@ -82,7 +83,7 @@ class App {
     /**提示管理器*/
     public static var tip:TipManager = new TipManager();
     /**拖动管理器*/
-    //public static var drag:DragManager = new DragManager();
+    public static var drag:DragManager = new DragManager();
     ///**语言管理器*/
     public static var lang:LangManager = new LangManager();
 

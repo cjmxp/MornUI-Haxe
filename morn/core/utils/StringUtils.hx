@@ -1,4 +1,5 @@
 package morn.core.utils;
+import openfl.geom.Rectangle;
 class StringUtils {
     public function new() {
     }
@@ -18,5 +19,12 @@ class StringUtils {
             }
         }
         return temp;
+    }
+    /**转换Rectangle为逗号间隔的字符串*/
+    public static function rectToString(rect:Rectangle):String {
+        if (rect!=null) {
+            return rect.x + "," + rect.y + "," + rect.width + "," + rect.height;
+        }
+        return null;
     }
 }

@@ -1,4 +1,6 @@
 package morn.core.utils;
+import flash.display.BitmapData;
+import openfl.display.Bitmap;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.filters.BitmapFilter;
@@ -38,5 +40,13 @@ class ObjectUtils {
             }
             target.filters = filters;
         }
+    }
+    /**创建位图*/
+    public static function createBitmap(width:Int, height:Int, color:UInt = 0, alpha:Float = 1):Bitmap {
+        var bitmap:Bitmap = new Bitmap(new BitmapData(1, 1, false, color));
+        bitmap.alpha = alpha;
+        bitmap.width = width;
+        bitmap.height = height;
+        return bitmap;
     }
 }
