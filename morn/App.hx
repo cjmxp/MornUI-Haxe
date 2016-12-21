@@ -19,6 +19,24 @@ import openfl.display.Stage;
 class App {
     /**默认FPS*/
     public static var FPS:Int = 60;
+    /**动画默认播放间隔*/
+    public static var MOVIE_INTERVAL(default, never):Int = 100;
+    //------------------动态配置------------------
+    /**资源路径*/
+    public static var resPath(default, never):String = "";
+    /**UI路径(UI加载模式可用)*/
+    public static var uiPath(default, never):String = "";
+    /**鼠标提示延迟(毫秒)*/
+    public static var tipDelay(default, never):Int = 200;
+    /**提示是否跟随鼠标移动*/
+    public static var tipFollowMove(default, never):Bool = true;
+    /**是否开启触摸*/
+    public static var touchScrollEnable(default, never):Bool = true;
+    /**是否支持鼠标滚轴滚动*/
+    public static var mouseWheelEnable(default, never):Bool = true;
+
+    //============================================================
+
     /**默认九宫格信息[左边距,上边距,右边距,下边距,是否重复填充]*/
     public static var defaultSizeGrid(default, never):Array<Int> = [4, 4, 4, 4, 0];
     //-----------------文本-----------------
@@ -65,8 +83,7 @@ class App {
 
     /**默认图片是否平滑处理*/
     public static var smoothing(default, never):Bool = false;
-    /**动画默认播放间隔*/
-    public static var MOVIE_INTERVAL(default, never):Int = 100;
+
     /**===========================================================================**/
     /**全局stage引用*/
     public static var stage:Stage;
