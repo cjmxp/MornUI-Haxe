@@ -5,8 +5,7 @@ class StringUtils {
     }
     public static function fillArray(arr:Dynamic,str:String):Dynamic
     {
-        var temp:Dynamic = arr.copy();
-        temp.length=arr.length;
+        var temp:Dynamic = arr.concat([]);
         if(str!="" && str!=null){
             var a:Array<String> = str.split(",");
             var n:Int = Std.int(Math.min(temp.length, a.length));

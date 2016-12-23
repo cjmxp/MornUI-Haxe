@@ -1,4 +1,5 @@
 package ;
+import morn.core.components.Slider;
 import morn.core.components.Button;
 import morn.App;
 import openfl.display.Sprite;
@@ -11,7 +12,6 @@ class Main extends Sprite{
         App.Init(stage);
         var box:View_Test=new View_Test();
         box.showBorder();
-        trace(box.width,box.height);
         addChild(box);
     }
 }

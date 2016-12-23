@@ -23,8 +23,8 @@ class Slider extends Component {
     private var _changeValue:Handler=null;
     public function new(skin:String = null) {
         super();
-        this.skin = skin;
         this._changeValue=new Handler(changeValue.bind());
+        this.skin = skin;
     }
     private override function preinitialize():Void {
         mouseChildren = true;

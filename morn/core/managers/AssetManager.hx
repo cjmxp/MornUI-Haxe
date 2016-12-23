@@ -10,7 +10,7 @@ class AssetManager {
 
        // #else
 
-        return Assets.exists(url);
+        return Assets.exists(fmt(url));
        // #end
     }
     /**获取资源*/
@@ -24,7 +24,7 @@ class AssetManager {
        // #if flash
 
         //#else
-        return Assets.getBitmapData(url,useCache);
+        return Assets.getBitmapData(fmt(url),useCache);
        // #end
 
     }
@@ -42,5 +42,14 @@ class AssetManager {
             clips = BitmapUtils.createClips(source, xNum, yNum);
         }
         return clips;
+    }
+    private function fmt(url:String):String{
+        var arr:Array<String>=url.split(".");
+        var type:String="";
+        if(arr.length>1){
+            type = arr[0];
+            arr = arr.slice(1);
+        }
+        return "assets/"+arr.join("/")+"."+type;
     }
 }
