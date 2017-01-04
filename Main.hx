@@ -6,7 +6,7 @@ import openfl.display.Sprite;
 class Main extends Sprite{
     public function new() {
         super();
-        #if (debug && cpp1)
+        #if (debug && cpp)
         new debugger.Local(true);
         #end
         App.Init(stage);

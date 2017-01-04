@@ -5,6 +5,6 @@ class HScrollBar extends ScrollBar {
     }
     private override function initialize():Void {
         super.initialize();
-        _slider.direction = HORIZONTAL;
+        _slider.direction = ScrollBar.HORIZONTAL;
     }
 }

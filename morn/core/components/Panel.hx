@@ -12,8 +12,10 @@ class Panel extends Box implements IContent {
     private var _changeScroll:Handler=null;
     public function new() {
         super();
-        width = 100;
-        height = 100;
+        _changeScroll=new Handler(changeScroll.bind());
+        _width = 100;
+        _height = 100;
+        refresh();
     }
     private override function createChildren():Void {
         _content = new Box();
@@ -115,11 +117,11 @@ class Panel extends Box implements IContent {
         return max;
     }
 
-    private function setContentSize(width:Float, height:Float):Void {
+    private function setContentSize(w:Float, h:Float):Void {
         var g:Graphics = graphics;
         g.clear();
         g.beginFill(0xffff00, 0);
-        g.drawRect(0, 0, width, height);
+        g.drawRect(0, 0, w, h);
         g.endFill();
         _content.width = width;
         _content.height = height;
@@ -131,12 +133,12 @@ class Panel extends Box implements IContent {
         return _content.numChildren;
     }
     @:setter(width)
-    private function set_width(value:Float):Void {
+    private override function set_width(value:Float):Void {
         super.width = value;
         callLater(_changeScroll);
     }
     @:setter(height)
-    private function set_height(value:Float):Void {
+    private override function set_height(value:Float):Void {
         super.height = value;
         callLater(_changeScroll);
     }
@@ -144,7 +146,7 @@ class Panel extends Box implements IContent {
     private override function get_numChildren():Int {
         return _content.numChildren;
     }
-    private override  function set_width(value:Float):Float {
+    private override function set_width(value:Float):Float {
         super.width = value;
         callLater(_changeScroll);
         return value;
@@ -162,7 +164,7 @@ class Panel extends Box implements IContent {
     }
     private function set_vScrollBarSkin(value:String):String {
         if (_vScrollBar == null) {
-            _vScrollBar = new VScrollBar()
+            _vScrollBar = new VScrollBar();
             super.addChild(_vScrollBar);
             _vScrollBar.addEventListener(Event.CHANGE, onScrollBarChange);
             _vScrollBar.target = this;
@@ -178,7 +180,7 @@ class Panel extends Box implements IContent {
     }
     private function set_hScrollBarSkin(value:String):String {
         if (_hScrollBar == null) {
-            _hScrollBar = new HScrollBar()
+            _hScrollBar = new HScrollBar();
             super.addChild(_hScrollBar);
             _hScrollBar.addEventListener(Event.CHANGE, onScrollBarChange);
             _hScrollBar.mouseWheelEnable = false;
@@ -186,6 +188,7 @@ class Panel extends Box implements IContent {
             callLater(_changeScroll);
         }
         _hScrollBar.skin = value;
+        return value;
     }
     /**垂直滚动条*/
     public var vScrollBar(get,never):ScrollBar;
@@ -199,6 +202,7 @@ class Panel extends Box implements IContent {
         return _hScrollBar;
     }
     /**内容容器*/
+    public var content(get,never):Sprite;
     private function get_content():Sprite {
         return _content;
     }

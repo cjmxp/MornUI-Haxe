@@ -5,6 +5,6 @@ class VScrollBar extends ScrollBar{
     }
     private override function initialize():Void {
         super.initialize();
-        _slider.direction = VERTICAL;
+        _slider.direction = ScrollBar.VERTICAL;
     }
 }
