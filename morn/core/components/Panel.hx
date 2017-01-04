@@ -1,12 +1,11 @@
 package morn.core.components;
-import openfl.display.Sprite;
 import openfl.geom.Rectangle;
 import openfl.display.Graphics;
 import morn.core.handlers.Handler;
 import openfl.events.Event;
 import openfl.display.DisplayObject;
 class Panel extends Box implements IContent {
-    private var _content:Box;
+    private var _content:Box=null;
     private var _vScrollBar:VScrollBar=null;
     private var _hScrollBar:HScrollBar=null;
     private var _changeScroll:Handler=null;
@@ -15,7 +14,7 @@ class Panel extends Box implements IContent {
         _changeScroll=new Handler(changeScroll.bind());
         _width = 100;
         _height = 100;
-        refresh();
+
     }
     private override function createChildren():Void {
         _content = new Box();
@@ -202,8 +201,8 @@ class Panel extends Box implements IContent {
         return _hScrollBar;
     }
     /**内容容器*/
-    public var content(get,never):Sprite;
-    private function get_content():Sprite {
+    public var content(get,never):Box;
+    private function get_content():Box {
         return _content;
     }
     private function onScrollBarChange(e:Event):Void {
@@ -233,7 +232,7 @@ class Panel extends Box implements IContent {
     public function refresh():Void {
         changeScroll();
     }
-    
+
     /**销毁*/
     public override function dispose():Void {
         super.dispose();

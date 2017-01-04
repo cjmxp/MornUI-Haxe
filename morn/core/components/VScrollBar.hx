@@ -1,5 +1,5 @@
 package morn.core.components;
-class VScrollBar extends ScrollBar{
+class VScrollBar extends ScrollBar {
     public function new(skin:String = null) {
         super(skin);
     }
