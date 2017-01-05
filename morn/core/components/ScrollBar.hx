@@ -32,12 +32,13 @@ class ScrollBar extends Component {
 
     public function new(skin:String = null) {
         super();
-        this.skin = skin;
         this._slide=new Handler(null);
         this._startLoop=new Handler(null);
         this._changeScrollBar=new Handler(changeScrollBar.bind());
         this._tweenMove=new Handler(tweenMove.bind());
+        this.skin = skin;
     }
+
     private override  function preinitialize():Void {
         mouseChildren = true;
     }
@@ -140,6 +141,7 @@ class ScrollBar extends Component {
         } else {
             _slider.width = width - _upButton.width - _downButton.width;
         }
+        trace(_slider.height,_slider.width);
         resetButtonPosition();
     }
 

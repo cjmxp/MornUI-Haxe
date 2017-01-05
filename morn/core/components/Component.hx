@@ -34,6 +34,8 @@ class Component extends Sprite implements IComponent {
 
     public function new() {
         super();
+        super.x=0;
+        super.y=0;
         _resetPosition = new Handler(resetPosition.bind());
         _sendEvent = new Handler(sendEvent.bind(UIEvent.MOVE));
         _changeSize = new Handler(changeSize.bind());

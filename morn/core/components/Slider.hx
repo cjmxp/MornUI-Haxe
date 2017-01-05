@@ -124,7 +124,7 @@ class Slider extends Component {
         if (_direction == VERTICAL) {
             _bar.x = (_back.width - _bar.width) * 0.5;
         } else {
-            _bar.y = (_back.height - _bar.height) * 0.5;
+            _bar.y = (_back.height - _bar.height)* 0.5;
         }
     }
     /**九宫格信息，格式：左边距,上边距,右边距,下边距,是否重复填充(值为0或1)，例如：4,4,4,4,1*/

@@ -4,14 +4,7 @@ class View extends Box {
     public static var uiMap:Dynamic = {};
     //private static var uiClassMap:Dynamic = {"Box": Box, "Button": Button, "CheckBox": CheckBox, "Clip": Clip, "ComboBox": ComboBox, "Component": Component, "Container": Container, "FrameClip": FrameClip, "HScrollBar": HScrollBar, "HSlider": HSlider, "Image": Image, "Label": Label, "LinkButton": LinkButton, "List": List, "Panel": Panel, "ProgressBar": ProgressBar, "RadioButton": RadioButton, "RadioGroup": RadioGroup, "ScrollBar": ScrollBar, "Slider": Slider, "Tab": Tab, "TextArea": TextArea, "TextInput": TextInput, "View": View, "ViewStack": ViewStack, "VScrollBar": VScrollBar, "VSlider": VSlider, "HBox": HBox, "VBox": VBox, "Tree": Tree};
     /**标准UI控件*/
-    private static var uiClassMap(default, never):Dynamic={
-        Box:Box, LayoutBox:LayoutBox,Group:Group,Button:Button,
-        LinkButton:LinkButton,CheckBox:CheckBox,Clip:Clip,
-        Image:Image,Label:Label,TextInput:TextInput,
-        HSlider:HSlider,VSlider:VSlider,
-        HScrollBar:HScrollBar,VScrollBar:VScrollBar,
-        Panel:Panel
-    };
+    private static var uiClassMap(default, never):Dynamic={Box:Box,LayoutBox:LayoutBox,Group:Group,Button:Button,LinkButton:LinkButton,CheckBox:CheckBox,Clip:Clip,Image:Image,Label:Label,TextInput:TextInput,HSlider:HSlider};
     private static var viewClassMap:Dynamic = {};
     public function new() {
         super();
