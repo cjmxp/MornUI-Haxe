@@ -38,7 +38,6 @@ class ScrollBar extends Component {
         this._tweenMove=new Handler(tweenMove.bind());
         this.skin = skin;
     }
-
     private override  function preinitialize():Void {
         mouseChildren = true;
     }
@@ -98,9 +97,11 @@ class ScrollBar extends Component {
         return _skin;
     }
     private function set_skin(value:String):String {
-        if (_skin != value) {
+        if (_skin != value && value!=null) {
             _skin = value;
             _slider.skin = _skin;
+            _upButton.skin = _skin + "$up";
+            _downButton.skin = _skin + "$down";
             callLater(_changeScrollBar);
         }
         return _skin;
@@ -108,10 +109,6 @@ class ScrollBar extends Component {
     private function changeScrollBar():Void {
         _upButton.visible = _showButtons;
         _downButton.visible = _showButtons;
-        if (_showButtons) {
-            _upButton.skin = _skin + "$up";
-            _downButton.skin = _skin + "$down";
-        }
         if (_slider.direction == VERTICAL) {
             _slider.y = _upButton.height;
         } else {
@@ -141,7 +138,7 @@ class ScrollBar extends Component {
         } else {
             _slider.width = width - _upButton.width - _downButton.width;
         }
-        trace(_slider.height,_slider.width);
+        trace(_upButton.x,_upButton.y,_slider.x,_slider.y,_slider.width,_slider.height);
         resetButtonPosition();
     }
 
@@ -212,7 +209,6 @@ class ScrollBar extends Component {
     }
     private function set_scrollSize(value:Float):Float {
         _scrollSize = value;
-        //_slider.tick = value;
         return value;
     }
 
@@ -327,7 +323,6 @@ class ScrollBar extends Component {
         return value;
     }
     private function onTargetMouseDown(e:MouseEvent):Void {
-        //_target.mouseChildren = true;
         App.timer.clearTimer(tweenMove);
         if(Std.is(e.target,DisplayObject)){
             if (!this.contains(cast(e.target,DisplayObject))) {
@@ -342,7 +337,6 @@ class ScrollBar extends Component {
         if (Math.abs(_lastOffset) >= 1) {
             _lastPoint.x = App.stage.mouseX;
             _lastPoint.y = App.stage.mouseY;
-            //_target.mouseChildren = false;
             value -= _lastOffset;
         }
     }
@@ -359,7 +353,6 @@ class ScrollBar extends Component {
         _lastOffset = _lastOffset * 0.92;
         value -= _lastOffset;
         if (Math.abs(_lastOffset) < 0.5) {
-            //_target.mouseChildren = true;
             App.timer.clearTimer(tweenMove);
         }
     }
