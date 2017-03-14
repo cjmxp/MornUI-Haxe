@@ -109,6 +109,7 @@ class ScrollBar extends Component {
     private function changeScrollBar():Void {
         _upButton.visible = _showButtons;
         _downButton.visible = _showButtons;
+        trace( _upButton.width,_upButton.height);
         if (_slider.direction == VERTICAL) {
             _slider.y = _upButton.height;
         } else {
@@ -138,7 +139,6 @@ class ScrollBar extends Component {
         } else {
             _slider.width = width - _upButton.width - _downButton.width;
         }
-        trace(_upButton.x,_upButton.y,_slider.x,_slider.y,_slider.width,_slider.height);
         resetButtonPosition();
     }
 
