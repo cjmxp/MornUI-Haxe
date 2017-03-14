@@ -4,7 +4,7 @@ class VScrollBar extends ScrollBar {
         super(skin);
     }
     private override function initialize():Void {
-        super.initialize();
         _slider.direction = ScrollBar.VERTICAL;
+        super.initialize();
     }
 }

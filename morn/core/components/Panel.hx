@@ -12,8 +12,8 @@ class Panel extends Box implements IContent {
     public function new() {
         super();
         _changeScroll=new Handler(changeScroll.bind());
-        _width = 100;
-        _height = 100;
+        _width = 10;
+        _height = 10;
 
     }
     private override function createChildren():Void {

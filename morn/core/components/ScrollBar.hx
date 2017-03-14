@@ -109,7 +109,6 @@ class ScrollBar extends Component {
     private function changeScrollBar():Void {
         _upButton.visible = _showButtons;
         _downButton.visible = _showButtons;
-        trace( _upButton.width,_upButton.height);
         if (_slider.direction == VERTICAL) {
             _slider.y = _upButton.height;
         } else {
@@ -117,29 +116,24 @@ class ScrollBar extends Component {
         }
         resetPositions();
     }
-    private function resetButtonPosition():Void {
-        if (_slider.direction == VERTICAL) {
-            _downButton.y = _slider.y + _slider.height;
-            _contentWidth = _slider.width;
-            _contentHeight = _downButton.y + _downButton.height;
-        } else {
-            _downButton.x = _slider.x + _slider.width;
-            _contentWidth = _downButton.x + _downButton.width;
-            _contentHeight = _slider.height;
-        }
-    }
     override private function changeSize():Void {
         super.changeSize();
         resetPositions();
     }
-
     private function resetPositions():Void {
         if (_slider.direction == VERTICAL) {
-            _slider.height = height - _upButton.height - _downButton.height;
+            _slider.height = height - (_upButton.height*2);
+            _slider.y=_upButton.height;
+            _downButton.y = _slider.y + _slider.height;
+            _contentWidth = _slider.width;
+            _contentHeight = _downButton.y + _downButton.height;
         } else {
-            _slider.width = width - _upButton.width - _downButton.width;
+            _slider.width = width - (_upButton.width*2);
+            _slider.x=_upButton.width;
+            _downButton.x = _slider.x + _slider.width;
+            _contentWidth = _downButton.x + _downButton.width;
+            _contentHeight = _slider.height;
         }
-        resetButtonPosition();
     }
 
     /**设置滚动条*/

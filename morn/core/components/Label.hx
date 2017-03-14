@@ -28,8 +28,12 @@ class Label extends Component {
     }
 
     private override function createChildren():Void {
-        addChild(_bitmap = new AutoBitmap());
-        addChild(_textField = new TextField());
+        _bitmap = new AutoBitmap();
+        _textField = new TextField();
+        _textField.width=17;
+        _textField.height=17;
+        addChild(_bitmap);
+        addChild(_textField);
     }
 
     private override function initialize():Void {
@@ -77,7 +81,7 @@ class Label extends Component {
             if (Math.isNaN(_height) && wordWrap) {
                 _textField.autoSize = TextFieldAutoSize.LEFT;
             } else {
-                _height = Math.isNaN(_height) ? 18 : _height;
+                _height = Math.isNaN(_height) ? 17 : _height;
                 _textField.height = _height - _margin[1] - _margin[3];
             }
         } else {

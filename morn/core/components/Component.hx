@@ -11,8 +11,8 @@ import openfl.display.Sprite;
 class Component extends Sprite implements IComponent {
     private var _width:Float = Math.NaN;
     private var _height:Float = Math.NaN;
-    private var _contentWidth:Float = 0.0;
-    private var _contentHeight:Float = 0.0;
+    private var _contentWidth:Float = 0.00000;
+    private var _contentHeight:Float = 0.00000;
     private var _disabled:Bool = false;
     private var _tag:Dynamic = null;
     private var _comXml:Xml  = null;
@@ -149,7 +149,7 @@ class Component extends Sprite implements IComponent {
         exeCallLater(_resetPosition);
         if (!Math.isNaN(_width)) {
             return _width;
-        } else if (_contentWidth != 0) {
+        } else if (_contentWidth != 0.00000) {
             return _contentWidth;
         } else {
             return measureWidth;
@@ -173,7 +173,7 @@ class Component extends Sprite implements IComponent {
         exeCallLater(_resetPosition);
         if (!Math.isNaN(_height)) {
             return _height;
-        } else if (_contentHeight != 0) {
+        } else if (_contentHeight != 0.00000) {
             return _contentHeight;
         } else {
             return measureHeight;

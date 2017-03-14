@@ -33,13 +33,13 @@ class RenderManager {
         }
     }
     public function callLater(fn:Handler):Void{
-        if(_methods.exists(fn)==false){
+        if(!_methods.exists(fn)){
             _methods.set(fn,true);
             invalidate();
         }
     }
     public function exeCallLater(fn:Handler):Void{
-        if(_methods.exists(fn)==true){
+        if(_methods.exists(fn)){
             _methods.remove(fn);
             fn.Function();
         }

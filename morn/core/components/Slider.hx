@@ -45,6 +45,7 @@ class Slider extends Component {
         allowBackClick = true;
     }
     private function onButtonMouseDown(e:MouseEvent):Void {
+        if(min>=max)return;
         App.stage.addEventListener(MouseEvent.MOUSE_UP, onStageMouseUp);
         App.stage.addEventListener(MouseEvent.MOUSE_MOVE, onStageMouseMove);
         if (_direction == VERTICAL) {
@@ -139,6 +140,7 @@ class Slider extends Component {
     }
 
     private function changeValue():Void {
+        if(_min>=_max)return;
         _value = Math.round(_value / _tick) * _tick;
         _value = _value > _max ? _max : _value < _min ? _min : _value;
         if (_direction == VERTICAL) {
