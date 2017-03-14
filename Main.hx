@@ -14,10 +14,5 @@ class Main extends Sprite{
         var box:View_Test=new View_Test();
         box.showBorder();
         addChild(box);
-        var bar:ScrollBar=new ScrollBar();
-        bar.skin="png.comp.hscroll";
-        bar.direction=ScrollBar.HORIZONTAL;
-        bar.width=100;
-        addChild(bar);
     }
 }

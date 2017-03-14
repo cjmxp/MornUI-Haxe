@@ -6,6 +6,8 @@ class View_Test extends View{
     <HSlider skin="png.comp.hslider" x="10" y="150" width="100"/>
     <CheckBox label="label" skin="png.comp.checkbox" x="50" y="8"/>
     <Button label="label" skin="png.comp.tab" x="293" y="8"/>
+    <HScrollBar skin="png.comp.hscroll" x="31" y="70" width="192" height="17"/>
+    <VScrollBar skin="png.comp.vscroll" x="33" y="92" width="17" height="136"/>
     <Image skin="png.comp.tab" x="438" y="8"/>
     <Label text="label" x="382" y="12"/>
     </View>');
