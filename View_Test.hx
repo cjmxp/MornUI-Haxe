@@ -3,6 +3,9 @@ import haxe.Json;
 import morn.core.components.View;
 class View_Test extends View{
     private static var uiView:Xml = Xml.parse('<View width="600" height="400">
+			  <Panel x="9" y="12" width="123" height="129">
+			    <Image skin="png.comp.image" x="0" y="0"/>
+			  </Panel>
 			  <HScrollBar skin="png.comp.hscroll" x="147" y="16" width="74" height="17"/>
 			  <CheckBox label="label" skin="png.comp.checkbox" x="242" y="14"/>
 			  <Button label="label" skin="png.comp.button" x="293" y="8"/>

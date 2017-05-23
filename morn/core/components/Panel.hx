@@ -1,4 +1,5 @@
 package morn.core.components;
+import haxe.CallStack;
 import openfl.geom.Rectangle;
 import openfl.display.Graphics;
 import morn.core.handlers.Handler;
@@ -10,17 +11,13 @@ class Panel extends Box implements IContent {
     private var _hScrollBar:HScrollBar=null;
     private var _changeScroll:Handler=null;
     public function new() {
-        super();
         _changeScroll=new Handler(changeScroll.bind());
-        _width = 10;
-        _height = 10;
-
+        super();
     }
     private override function createChildren():Void {
         _content = new Box();
-        super.addChild(_content);
+        super.addChildAt(_content,0);
     }
-
     public override function addChild(child:DisplayObject):DisplayObject {
         child.addEventListener(Event.RESIZE, onResize);
         callLater(_changeScroll);
@@ -117,14 +114,14 @@ class Panel extends Box implements IContent {
     }
 
     private function setContentSize(w:Float, h:Float):Void {
-        var g:Graphics = graphics;
+        /*var g:Graphics = graphics;
         g.clear();
-        g.beginFill(0xffff00, 0);
+        g.beginFill(0xffff00, 1);
         g.drawRect(0, 0, w, h);
-        g.endFill();
-        _content.width = width;
-        _content.height = height;
-        _content.scrollRect = new Rectangle(0, 0, width, height);
+        g.endFill();*/
+        _content.width = w;
+        _content.height = h;
+        _content.scrollRect = new Rectangle(0, 0, w,h);
     }
     #if flash
     @:getter(numChildren)
