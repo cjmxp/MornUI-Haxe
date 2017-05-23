@@ -74,6 +74,7 @@ class Clip extends Component implements IClip {
         return _clipX;
     }
     private function set_clipX(value:Int):Int {
+        value = Std.int(value);
         if (_clipX != value) {
             _clipX = value;
             callLater(_changeClip);
@@ -86,6 +87,7 @@ class Clip extends Component implements IClip {
         return _clipY;
     }
     private function set_clipY(value:Int):Int {
+        value = Std.int(value);
         if (_clipY != value) {
             _clipY = value;
             callLater(_changeClip);
@@ -98,6 +100,7 @@ class Clip extends Component implements IClip {
         return _clipWidth;
     }
     private function set_clipWidth(value:Float):Float {
+        value = Std.parseFloat(Std.string(value));
         _clipWidth = value;
         callLater(_changeClip);
         return _clipWidth;
@@ -108,6 +111,7 @@ class Clip extends Component implements IClip {
         return _clipHeight;
     }
     private function set_clipHeight(value:Float):Float {
+        value = Std.parseFloat(Std.string(value));
         _clipHeight = value;
         callLater(_changeClip);
         return value;
@@ -199,6 +203,7 @@ class Clip extends Component implements IClip {
         return _bitmap.index;
     }
     private function set_frame(value:Int):Int {
+        value = Std.int(value);
         _bitmap.index = value;
         sendEvent(UIEvent.FRAME_CHANGED);
         if(_bitmap.index == _to){
@@ -218,6 +223,7 @@ class Clip extends Component implements IClip {
         return _bitmap.index;
     }
     private function set_index(value:Int):Int {
+        value = Std.int(value);
         frame = value;
         return value;
     }
@@ -254,6 +260,7 @@ class Clip extends Component implements IClip {
         return _interval;
     }
     private function set_interval(value:Int):Int {
+        value = Std.int(value);
         if (_interval != value) {
             _interval = value;
             if (_isPlaying) {
@@ -320,6 +327,7 @@ class Clip extends Component implements IClip {
         return _bitmap.anchorX;
     }
     private function set_anchorX(value:Float):Float {
+        value = Std.parseFloat(Std.string(value));
         _bitmap.anchorX = value;
         return value;
     }
@@ -329,6 +337,7 @@ class Clip extends Component implements IClip {
         return _bitmap.anchorY;
     }
     private function set_anchorY(value:Float):Float {
+        value = Std.parseFloat(Std.string(value));
         _bitmap.anchorY = value;
         return value;
     }

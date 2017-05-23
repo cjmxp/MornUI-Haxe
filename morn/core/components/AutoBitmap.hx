@@ -137,6 +137,7 @@ class AutoBitmap extends Bitmap {
         return _index;
     }
     private function set_index(value:Int):Int {
+        value = Std.int(value);
         _index = value;
         if (_clips!=null && _clips.length > 0) {
             _index = (_index < _clips.length && _index > -1) ? _index : 0;
@@ -207,6 +208,7 @@ class AutoBitmap extends Bitmap {
         return _anchorX;
     }
     private function set_anchorX(value:Float):Float {
+        value = Std.parseFloat(Std.string(value));
         _anchorX = value;
         return value;
     }
@@ -217,6 +219,7 @@ class AutoBitmap extends Bitmap {
         return _anchorY;
     }
     private function set_anchorY(value:Float):Float {
+        value = Std.parseFloat(Std.string(value));
         _anchorY = value;
         return value;
     }

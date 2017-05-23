@@ -71,7 +71,7 @@ class Box extends Component implements IBox {
             var value:Dynamic = Reflect.field(_dataSource, name);
             var comp:Dynamic = getChildByName(name);
             if(comp!=null && Std.is(comp,Component)){
-                comp.dataSource=value;
+                cast(comp,Component).dataSource=value;
             }else{
                 if (Reflect.hasField(this, name)) {
                     Reflect.setField(this, name, value);

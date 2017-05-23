@@ -89,6 +89,7 @@ class Group extends Box implements IItem {
         return _selectedIndex;
     }
     private function set_selectedIndex(value:Int):Int {
+        value = Std.int(value);
         if (_selectedIndex != value) {
             setSelect(_selectedIndex, false);
             _selectedIndex = value;
@@ -229,6 +230,7 @@ class Group extends Box implements IItem {
         return _space;
     }
     private function set_space(value:Float):Float {
+        value = Std.parseFloat(Std.string(value));
         _space = value;
         callLater(_changeLabels);
         return value;

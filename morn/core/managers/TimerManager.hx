@@ -43,9 +43,8 @@ class TimerManager {
             clearTimer(method);
             key = method;
         } else {
-            key = _index++;
+           key = _index++;
         }
-
         //如果执行时间小于1，直接执行
         if (delay < 1) {
             method.Function();

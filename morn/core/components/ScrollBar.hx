@@ -69,9 +69,12 @@ class ScrollBar extends Component {
     private function onButtonMouseDown(e:MouseEvent):Void {
         var isUp:Bool = e.currentTarget == _upButton;
         slide(isUp);
-        _startLoop.Function=startLoop.bind(isUp);
-        App.timer.doOnce(App.scrollBarDelayTime, _startLoop, isUp);
-        App.stage.addEventListener(MouseEvent.MOUSE_UP, onStageMouseUp);
+        //_startLoop.Function=startLoop.bind(isUp);
+        _slide.Function=slide.bind(isUp);
+        //callLater(_startLoop);
+        callLater(_slide);
+        //App.timer.doOnce(App.scrollBarDelayTime, _startLoop, isUp);
+        //App.stage.addEventListener(MouseEvent.MOUSE_UP, onStageMouseUp);
     }
 
     private function startLoop(isUp:Bool):Void {
@@ -88,8 +91,8 @@ class ScrollBar extends Component {
     }
     private function onStageMouseUp(e:MouseEvent):Void {
         App.stage.removeEventListener(MouseEvent.MOUSE_UP, onStageMouseUp);
-        App.timer.clearTimer(startLoop);
-        App.timer.clearTimer(slide);
+        App.timer.clearTimer(_startLoop);
+        App.timer.clearTimer(_slide);
     }
     /**皮肤*/
     public var skin(get,set):String;
@@ -135,7 +138,6 @@ class ScrollBar extends Component {
             _contentHeight = _slider.height;
         }
     }
-
     /**设置滚动条*/
     public function setScroll(min:Float, max:Float, value:Float):Void {
         exeCallLater(_changeSize);
@@ -151,7 +153,7 @@ class ScrollBar extends Component {
         return _slider.max;
     }
     private function set_max(value:Float):Float {
-        _slider.max = value;
+        _slider.max = Std.parseFloat(Std.string(value));
         return value;
 
     }
@@ -162,7 +164,7 @@ class ScrollBar extends Component {
         return _slider.min;
     }
     private function set_min(value:Float):Float {
-        _slider.min = value;
+        _slider.min = Std.parseFloat(Std.string(value));
         return value;
     }
 
@@ -172,7 +174,7 @@ class ScrollBar extends Component {
         return _slider.value;
     }
     private function set_value(value:Float):Float {
-        _slider.value = value;
+        _slider.value = Std.parseFloat(Std.string(value));
         return value;
     }
 
@@ -202,7 +204,7 @@ class ScrollBar extends Component {
         return _scrollSize;
     }
     private function set_scrollSize(value:Float):Float {
-        _scrollSize = value;
+        _scrollSize = Std.parseFloat(Std.string(value));
         return value;
     }
 
@@ -222,7 +224,7 @@ class ScrollBar extends Component {
     }
     private function set_thumbPercent(value:Float):Float {
         exeCallLater(_changeSize);
-        _thumbPercent = value;
+        _thumbPercent = Std.parseFloat(Std.string(value));
         if (_scaleBar) {
             if (_slider.direction == VERTICAL) {
                 _slider.bar.height = Math.max(_slider.height * value, App.scrollBarMinNum);

@@ -62,6 +62,7 @@ class LayoutBox extends Box {
         return _space;
     }
     private function set_space(value:Float):Float {
+        value = Std.parseFloat(Std.string(value));
         _space = value;
         callLater(_changeItems);
         return value;

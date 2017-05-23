@@ -21,9 +21,11 @@ class Slider extends Component {
     private var _showLabel:Bool = true;
     private var _changeHandler:Handler=null;
     private var _changeValue:Handler=null;
+    private var _setBarPoint:Handler=null;
     public function new(skin:String = null) {
         super();
         this._changeValue=new Handler(changeValue.bind());
+        this._setBarPoint=new Handler(setBarPoint.bind());
         this.skin = skin;
     }
     private override function preinitialize():Void {
@@ -111,7 +113,7 @@ class Slider extends Component {
             _bar.skin = _skin + "$bar";
             _contentWidth = _back.width;
             _contentHeight = _back.height;
-            setBarPoint();
+            callLater(_setBarPoint);
         }
         return value;
     }
@@ -119,7 +121,7 @@ class Slider extends Component {
         super.changeSize();
         _back.width = width;
         _back.height = height;
-        setBarPoint();
+        callLater(_setBarPoint);
     }
     private function setBarPoint():Void {
         if (_direction == VERTICAL) {
@@ -162,6 +164,7 @@ class Slider extends Component {
         return _tick;
     }
     private function set_tick(value:Float):Float {
+        value = Std.parseFloat(Std.string(value));
         _tick = value;
         callLater(_changeValue);
         return _tick;
@@ -172,6 +175,7 @@ class Slider extends Component {
         return _max;
     }
     private function set_max(value:Float):Float {
+        value = Std.parseFloat(Std.string(value));
         if (_max != value) {
             _max = value;
             callLater(_changeValue);
@@ -184,6 +188,7 @@ class Slider extends Component {
         return _min;
     }
     private function set_min(value:Float):Float {
+        value = Std.parseFloat(Std.string(value));
         if (_min != value) {
             _min = value;
             callLater(_changeValue);
@@ -196,6 +201,7 @@ class Slider extends Component {
         return _value;
     }
     private function set_value(num:Float):Float {
+        num=Std.parseFloat(Std.string(num));
         if (_value != num) {
             _value = num;
             //callLater(changeValue);

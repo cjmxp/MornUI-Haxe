@@ -8,7 +8,6 @@ class TextInput extends Label {
     }
     private override function initialize():Void {
         super.initialize();
-        trace(Type.resolveClass("Label"));
         mouseChildren = true;
         width = 128;
         height = 22;
@@ -50,7 +49,7 @@ class TextInput extends Label {
         return _textField.maxChars;
     }
     private function set_maxChars(value:Int):Int {
-        _textField.maxChars = value;
+        _textField.maxChars = Std.int(value);
         return value;
     }
 }
