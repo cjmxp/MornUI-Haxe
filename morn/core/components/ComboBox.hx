@@ -273,8 +273,8 @@ class ComboBox extends Component {
             _isOpen = value;
             _button.selected = _isOpen;
             if (_isOpen) {
-                _list.setPosition(0, _button.height);
-                this.addChild(_list);
+                _list.setPosition(this.x, this.y+_button.height);
+                if(parent!=null)parent.addChild(_list);
                 App.stage.addEventListener(MouseEvent.MOUSE_DOWN, removeList);
                 //处理定位
                 _list.scrollTo((_selectedIndex + _visibleNum) < _list.length ? _selectedIndex : _list.length - _visibleNum);

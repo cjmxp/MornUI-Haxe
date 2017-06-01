@@ -18,9 +18,10 @@ class View_Test extends View{
 			      <Button label="label" skin="png.comp.button" x="0" y="0" width="75" height="22" name="text"/>
 			    </Box>
 			  </List>
-			  <Clip skin="png.comp.clip_num" x="267" y="61" clipX="10" clipY="1" index="0" autoPlay="true"/>
-			  <ComboBox labels="label1,label2" skin="png.comp.combobox" x="286" y="100" scrollBarSkin="png.comp.vscroll" selectedIndex="0" width="86"/>
-			  <ProgressBar skin="png.comp.progress" x="336" y="56" value="0.2"/>
+			  <Clip skin="png.comp.clip_num" x="287" y="44" clipX="10" clipY="1" index="0" autoPlay="true"/>
+			  <ComboBox labels="label1,label2" skin="png.comp.combobox" x="287" y="72" scrollBarSkin="png.comp.vscroll" selectedIndex="0" width="86"/>
+			  <ProgressBar skin="png.comp.progress" x="320" y="54" value="0.2" width="52" height="14"/>
+			  <RadioButton label="label" skin="png.comp.radio" x="287" y="97"/>
 			</View>');
     //private static var uiView:Dynamic=Json.parse('{"type":"View","child":[{"type":"Button","props":{"y":"8","skin":"assets/button.png","label":"label","x":"293"}},{"type":"Image","props":{"y":"8","skin":"assets/button.png","x":"438"}},{"type":"Label","props":{"y":"12","text":"label","x":"382"}}],"props":{"height":"400","width":"600"}}');
 

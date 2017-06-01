@@ -26,8 +26,8 @@ class Button extends Component implements ISelect {
         this._changeState=new Handler(changeState.bind());
         this._changeClips=new Handler(changeClips.bind());
         this._changeLabelSize=new Handler(changeLabelSize.bind());
-        this.skin = skin;
-        this.label = label;
+        if(skin!=null)this.skin=skin;
+        if(label!=null)this.label = label;
     }
     private override function createChildren():Void {
         _bitmap = new AutoBitmap();
