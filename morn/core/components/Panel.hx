@@ -161,7 +161,7 @@ class Panel extends Box implements IContent {
     private function set_vScrollBarSkin(value:String):String {
         if (_vScrollBar == null) {
             _vScrollBar = new VScrollBar();
-            super.addChild(_vScrollBar);
+            super.addChildAt(_vScrollBar,this.numChildren);
             _vScrollBar.addEventListener(Event.CHANGE, onScrollBarChange);
             _vScrollBar.target = this;
             callLater(_changeScroll);
@@ -177,7 +177,7 @@ class Panel extends Box implements IContent {
     private function set_hScrollBarSkin(value:String):String {
         if (_hScrollBar == null) {
             _hScrollBar = new HScrollBar();
-            super.addChild(_hScrollBar);
+            super.addChildAt(_hScrollBar,this.numChildren);
             _hScrollBar.addEventListener(Event.CHANGE, onScrollBarChange);
             _hScrollBar.mouseWheelEnable = false;
             _hScrollBar.target = this;

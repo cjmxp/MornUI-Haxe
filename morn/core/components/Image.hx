@@ -103,7 +103,7 @@ class Image extends Component {
         return value;
     }
     /**位图控件实例*/
-    @:getter(bitmap)
+    public var bitmap(get,never):AutoBitmap;
     private function get_bitmap():AutoBitmap {
         return _bitmap;
     }

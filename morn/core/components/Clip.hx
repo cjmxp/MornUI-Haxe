@@ -228,7 +228,7 @@ class Clip extends Component implements IClip {
         return value;
     }
     /**切片帧的总数*/
-    @:getter(totalFrame)
+    public var totalFrame(get,never):Int;
     private function get_totalFrame():Int {
         exeCallLater(_changeClip);
         return _bitmap.clips!=null ? _bitmap.clips.length : 0;
@@ -342,7 +342,7 @@ class Clip extends Component implements IClip {
         return value;
     }
     /**位图实体*/
-    @:getter(bitmap)
+    public var bitmap(get,never):AutoBitmap;
     private function get_bitmap():AutoBitmap {
         return _bitmap;
     }

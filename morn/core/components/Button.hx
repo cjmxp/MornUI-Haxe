@@ -232,8 +232,8 @@ class Button extends Component implements ISelect {
         return value;
     }
     /**按钮标签控件*/
-    @:getter(btnLabel)
-    public function get_btnLabel():Label {
+    public var btnLabel(get,never):Label;
+    private function get_btnLabel():Label {
         return _btnLabel;
     }
     /**九宫格信息，格式：左边距,上边距,右边距,下边距,是否重复填充(值为0或1)，例如：4,4,4,4,1*/

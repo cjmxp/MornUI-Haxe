@@ -239,7 +239,7 @@ class Group extends Box implements IItem {
     }
 
     /**按钮集合*/
-    @:getter(items)
+    public var items(get,never):Array<ISelect>;
     public function get_items():Array<ISelect> {
         return _items;
     }

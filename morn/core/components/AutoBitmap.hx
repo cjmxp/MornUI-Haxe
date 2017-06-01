@@ -11,18 +11,12 @@ class AutoBitmap extends Bitmap {
     private var _source:Array<BitmapData>;
     private var _clips:Array<BitmapData>;
     private var _index:Int = 0;
-    private var _smoothing:Bool = App.smoothing;
     private var _anchorX:Float = Math.NaN;
     private var _anchorY:Float = Math.NaN;
     private var _changeSize:Handler = null;
     public function new() {
         super();
         _changeSize=new Handler(changeSize.bind());
-    }
-    /**是否平滑处理*/
-    @:getter(smoothing)
-    private function get_smoothing():Bool {
-        return _smoothing;
     }
     #if flash
     /**宽度(显示时四舍五入)*/
@@ -60,11 +54,6 @@ class AutoBitmap extends Bitmap {
             super.bitmapData = null;
         }
     }
-    @:setter(smoothing)
-    private function set_smoothing(value:Bool):Void {
-        super.smoothing = value;
-        _smoothing = value;
-    }
     #else
     /**宽度(显示时四舍五入)*/
     private override function get_width():Float {
@@ -97,12 +86,6 @@ class AutoBitmap extends Bitmap {
             _clips = null;
             super.bitmapData = null;
         }
-        return value;
-    }
-    @:setter(smoothing)
-    private function set_smoothing(value:Bool):Bool {
-        this.smoothing = value;
-        _smoothing = value;
         return value;
     }
     #end
@@ -142,7 +125,6 @@ class AutoBitmap extends Bitmap {
         if (_clips!=null && _clips.length > 0) {
             _index = (_index < _clips.length && _index > -1) ? _index : 0;
             super.bitmapData = _clips[_index];
-            this.smoothing = _smoothing;
         }
         return _index;
     }
