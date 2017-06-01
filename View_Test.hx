@@ -13,7 +13,7 @@ class View_Test extends View{
 			  <Image skin="png.comp.image" x="438" y="8"/>
 			  <Label text="label" x="382" y="12"/>
 			  <VScrollBar skin="png.comp.vscroll" x="147" y="65" width="17" height="65"/>
-			  <List x="168" y="61" repeatX="1" repeatY="10" width="93" spaceY="2" vScrollBarSkin="png.comp.vscroll" height="238">
+			  <List x="168" y="61" repeatX="1" repeatY="10" spaceY="2" vScrollBarSkin="png.comp.vscroll" height="239" width="93">
 			    <Box name="render" x="0" y="0" width="75" height="22">
 			      <Button label="label" skin="png.comp.button" x="0" y="0" width="75" height="22" name="text"/>
 			    </Box>
@@ -33,6 +33,8 @@ class View_Test extends View{
 			    <Label text="2" x="21" width="10" height="18"/>
 			    <Label text="3" x="51" y="18" width="10" height="18"/>
 			  </VBox>
+			  <TextArea text="TextArea" skin="png.comp.textarea" x="8" y="192" width="118" height="121" align="left" vScrollBarSkin="png.comp.vscroll"/>
+			  <Tab labels="label1,label2" skin="png.comp.tab" x="7" y="156" direction="horizontal"/>
 			</View>');
     //private static var uiView:Dynamic=Json.parse('{"type":"View","child":[{"type":"Button","props":{"y":"8","skin":"assets/button.png","label":"label","x":"293"}},{"type":"Image","props":{"y":"8","skin":"assets/button.png","x":"438"}},{"type":"Label","props":{"y":"12","text":"label","x":"382"}}],"props":{"height":"400","width":"600"}}');
 
