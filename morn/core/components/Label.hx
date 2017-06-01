@@ -369,24 +369,24 @@ class Label extends Component {
         _bitmap.height = value;
     }
     #else
-    override public function get_width():Float {
+    override private function get_width():Float {
         if (!Math.isNaN(_width) || (_skin!=null && _skin!="") || _text!=null) {
             return super.width;
         }
         return 0;
     }
-    override public function set_width(value:Float):Float {
+    override private function set_width(value:Float):Float {
         super.width = value;
         _bitmap.width = value;
         return value;
     }
-    override public function get_height():Float {
+    override private function get_height():Float {
         if (!Math.isNaN(_height) || (_skin!=null && _skin!="") || _text!=null) {
             return super.height;
         }
         return 0;
     }
-    override public function set_height(value:Float):Float {
+    override private function set_height(value:Float):Float {
         super.height = value;
         _bitmap.height = value;
         return value;

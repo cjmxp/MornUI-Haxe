@@ -135,15 +135,15 @@ class ProgressBar extends Component {
         super.width = value;
         _bg.width = _width;
         _barLabel.width = _width;
-        callLater(changeLabelPoint);
-        callLater(changeValue);
+        callLater(_changeLabelPoint);
+        callLater(_changeValue);
     }
     @:setter(height)
     private override function set_height(value:Float):Void {
         super.height = value;
         _bg.height = _height;
         _bar.height = _height;
-        callLater(changeLabelPoint);
+        callLater(_changeLabelPoint);
     }
     #else
     override public function set_width(value:Float):Float {
