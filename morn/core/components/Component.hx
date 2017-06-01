@@ -66,13 +66,14 @@ class Component extends Sprite implements IComponent {
     public function callLater(fn:Handler):Void {
         App.render.callLater(fn);
     }
-
     /**立即执行延迟调用*/
-
+    public function delayCallLater(fn:Handler,delay:Int):Void {
+        App.render.delayCallLater(fn,delay);
+    }
+    /**立即执行延迟调用*/
     public function exeCallLater(fn:Handler):Void {
         App.render.exeCallLater(fn);
     }
-
     /**派发事件，data为事件携带数据*/
 
     public function sendEvent(type:String, data:Dynamic = null):Void {

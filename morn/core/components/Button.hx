@@ -22,12 +22,12 @@ class Button extends Component implements ISelect {
     private var _changeLabelSize:Handler= null;
 
     public function new(skin:String = null, label:String = "") {
-        super();
         this._changeState=new Handler(changeState.bind());
         this._changeClips=new Handler(changeClips.bind());
         this._changeLabelSize=new Handler(changeLabelSize.bind());
-        if(skin!=null)this.skin=skin;
-        if(label!=null)this.label = label;
+        super();
+        this.skin = skin;
+        this.label = label;
     }
     private override function createChildren():Void {
         _bitmap = new AutoBitmap();
@@ -89,8 +89,8 @@ class Button extends Component implements ISelect {
     private function changeClips():Void {
         _bitmap.clips = App.asset.getClips(_skin, 1, _stateNum);
         if (_autoSize) {
-            _contentWidth = _bitmap.width;
-            _contentHeight = _bitmap.height;
+            _width = _bitmap.width;
+            _height = _bitmap.height;
         }
     }
     public override function commitMeasure():Void {
@@ -248,7 +248,6 @@ class Button extends Component implements ISelect {
         _bitmap.sizeGrid = StringUtils.fillArray(App.defaultSizeGrid, value);
         return value;
     }
-
     #if flash
     @:setter(width)
     private override function set_width(value:Float):Void {

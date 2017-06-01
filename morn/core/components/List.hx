@@ -168,11 +168,8 @@ class List extends Box implements IRender implements IItem {
 
             if (_isVerticalLayout && _scrollBar!=null) {
                 _scrollBar.height = listHeight;
-                _scrollBar.right=_scrollBar.getBounds(_scrollBar).width;
-                trace(_scrollBar.getBounds(_scrollBar));
             } else if (!_isVerticalLayout && _scrollBar!=null) {
                 _scrollBar.width = listWidth;
-                _scrollBar.bottom=_scrollBar.getBounds(_scrollBar).height;
             }
             setContentSize(listWidth, listHeight);
             //创建新单元格
@@ -503,6 +500,7 @@ class List extends Box implements IRender implements IItem {
         removeChildByName("scrollBar");
         var scrollBar:ScrollBar = new VScrollBar();
         scrollBar.name = "scrollBar";
+        scrollBar.right=0.0;
         scrollBar.skin = value;
         addChild(scrollBar);
         callLater(_changeCells);
@@ -517,6 +515,7 @@ class List extends Box implements IRender implements IItem {
         removeChildByName("scrollBar");
         var scrollBar:ScrollBar = new HScrollBar();
         scrollBar.name = "scrollBar";
+        scrollBar.bottom=0.0;
         scrollBar.skin = value;
         addChild(scrollBar);
         callLater(_changeCells);

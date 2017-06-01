@@ -1,12 +1,15 @@
 package morn.core.components;
 /**Tab标签，默认selectedIndex=-1*/
+import morn.core.handlers.Handler;
 import openfl.display.DisplayObject;
 class Tab extends Group{
     /**横向的*/
     public static var HORIZENTAL:String = "horizontal";
     /**纵向的*/
     public static var VERTICAL:String = "vertical";
+    private var _changePost:Handler=null;
     public function new(labels:String = null, skin:String = null) {
+        this._changePost=new Handler(changePost.bind());
         super(labels, skin);
         _direction = HORIZENTAL;
     }
@@ -15,7 +18,6 @@ class Tab extends Group{
     }
     override private function changeLabels():Void {
         if (_items!=null) {
-            var left:Float = 0.0;
             for (i in 0..._items.length) {
                 var btn:Button = cast(_items[i],Button);
                 if(btn!=null){
@@ -25,14 +27,22 @@ class Tab extends Group{
                     if (_labelSize!=null)btn.labelSize = _labelSize;
                     if (_labelBold!=null)btn.labelBold = _labelBold;
                     if (_labelMargin!=null)btn.labelMargin = _labelMargin;
+                }
+            }
+        }
+        this.delayCallLater(_changePost,20);
+    }
+    private function changePost():Void {
+        if (_items!=null) {
+            for (i in 0..._items.length) {
+                var btn:Button = cast(_items[i],Button);
+                if(btn!=null){
                     if (_direction == HORIZENTAL) {
                         btn.y = 0;
-                        btn.x = left;
-                        left += btn.width + _space;
+                        btn.x = i * btn.width + _space;
                     } else {
                         btn.x = 0;
-                        btn.y = left;
-                        left += btn.height + _space;
+                        btn.y = i * btn.height + _space;
                     }
                 }
             }

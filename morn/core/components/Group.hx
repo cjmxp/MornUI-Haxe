@@ -17,10 +17,10 @@ class Group extends Box implements IItem {
     private var _direction:String=null;
     private var _space:Float = 0;
     public function new(labels:String = null, skin:String = null) {
+        this._changeLabels=new Handler(changeLabels.bind());
         super();
         this.skin = skin;
         this.labels = labels;
-        this._changeLabels=new Handler(changeLabels.bind());
     }
     /**增加项，返回索引id
 	* @param autoLayOut 是否自动布局，如果为true，会根据direction和space属性计算item的位置*/
@@ -138,7 +138,6 @@ class Group extends Box implements IItem {
         if (_labels != value) {
             _labels = value;
             removeAllChild();
-            callLater(_changeLabels);
             if (_labels!=null && _labels!="") {
                 var a:Array<String> = App.lang.getLang(_labels).split(",");
                 for (i in 0...a.length) {
@@ -148,6 +147,7 @@ class Group extends Box implements IItem {
                 }
             }
             initItems();
+            callLater(_changeLabels);
         }
         return value;
     }
@@ -237,7 +237,6 @@ class Group extends Box implements IItem {
     }
     private function changeLabels():Void {
     }
-
     /**按钮集合*/
     public var items(get,never):Array<ISelect>;
     public function get_items():Array<ISelect> {
