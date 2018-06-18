@@ -43,6 +43,11 @@ class Component extends Sprite implements IComponent {
         preinitialize();
         createChildren();
         initialize();
+        init();
+
+    }
+    private function init():Void {
+
     }
     /**预初始化，在此可以修改属性默认值*/
 
