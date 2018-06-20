@@ -1,4 +1,5 @@
 package morn.core.components;
+import haxe.CallStack;
 import openfl.display.DisplayObject;
 import openfl.events.Event;
 import openfl.events.MouseEvent;
@@ -16,10 +17,7 @@ class ScrollBar extends Component {
     private var _downButton:Button=null;
     private var _slider:Slider=null;
     private var _changeHandler:Handler=null;
-    private var _slide:Handler=null;
-    private var _startLoop:Handler=null;
     private var _changeScrollBar:Handler=null;
-    private var _tweenMove:Handler=null;
     private var _thumbPercent:Float = 1;
     private var _target:InteractiveObject=null;
     private var _touchScrollEnable:Bool = App.touchScrollEnable;
@@ -32,10 +30,7 @@ class ScrollBar extends Component {
 
     public function new(skin:String = null) {
         super();
-        this._slide=new Handler(null);
-        this._startLoop=new Handler(null);
         this._changeScrollBar=new Handler(changeScrollBar.bind());
-        this._tweenMove=new Handler(tweenMove.bind());
         this.skin = skin;
     }
     private override  function preinitialize():Void {
@@ -67,32 +62,18 @@ class ScrollBar extends Component {
     }
 
     private function onButtonMouseDown(e:MouseEvent):Void {
-        var isUp:Bool = e.currentTarget == _upButton;
-        slide(isUp);
-        //_startLoop.Function=startLoop.bind(isUp);
-        _slide.Function=slide.bind(isUp);
-        //callLater(_startLoop);
-        callLater(_slide);
-        //App.timer.doOnce(App.scrollBarDelayTime, _startLoop, isUp);
-        //App.stage.addEventListener(MouseEvent.MOUSE_UP, onStageMouseUp);
+        slide(e.currentTarget);
     }
 
-    private function startLoop(isUp:Bool):Void {
-        _slide.Function=slide.bind(isUp);
-        App.timer.doFrameLoop(1, _slide, isUp);
-    }
-
-    private function slide(isUp:Bool):Void {
-        if (isUp) {
+    private function slide(button:Button):Void {
+        if (button == _upButton) {
             value =  value - _scrollSize;
         } else {
-            value =  value + _scrollSize;
+            value = value +_scrollSize;
         }
     }
     private function onStageMouseUp(e:MouseEvent):Void {
         App.stage.removeEventListener(MouseEvent.MOUSE_UP, onStageMouseUp);
-        App.timer.clearTimer(_startLoop);
-        App.timer.clearTimer(_slide);
     }
     /**皮肤*/
     public var skin(get,set):String;
@@ -155,7 +136,6 @@ class ScrollBar extends Component {
     private function set_max(value:Float):Float {
         _slider.max = Std.parseFloat(Std.string(value));
         return value;
-
     }
 
     /**最小滚动位置*/
@@ -319,7 +299,6 @@ class ScrollBar extends Component {
         return value;
     }
     private function onTargetMouseDown(e:MouseEvent):Void {
-        App.timer.clearTimer(tweenMove);
         if(Std.is(e.target,DisplayObject)){
             if (!this.contains(cast(e.target,DisplayObject))) {
                 App.stage.addEventListener(MouseEvent.MOUSE_UP, onStageMouseUp2);
@@ -333,7 +312,7 @@ class ScrollBar extends Component {
         if (Math.abs(_lastOffset) >= 1) {
             _lastPoint.x = App.stage.mouseX;
             _lastPoint.y = App.stage.mouseY;
-            value = value - _lastOffset;
+            value =value - _lastOffset;
         }
     }
     private function onStageMouseUp2(e:MouseEvent):Void {
@@ -342,14 +321,6 @@ class ScrollBar extends Component {
         _lastOffset = _slider.direction == VERTICAL ? App.stage.mouseY - _lastPoint.y : App.stage.mouseX - _lastPoint.x;
         if (Math.abs(_lastOffset) > 50) {
             _lastOffset = _lastOffset > 0 ? 50 : -50;
-        }
-        App.timer.doFrameLoop(1, _tweenMove);
-    }
-    private function tweenMove():Void {
-        _lastOffset = _lastOffset * 0.92;
-        value = value -_lastOffset;
-        if (Math.abs(_lastOffset) < 0.5) {
-            App.timer.clearTimer(tweenMove);
         }
     }
 
