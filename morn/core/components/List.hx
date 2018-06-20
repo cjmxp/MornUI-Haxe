@@ -33,6 +33,7 @@ class List extends Box implements IRender implements IItem {
     private var _cellSize:Float = 20.0;
     public function new() {
         super();
+        _array=[];
         _renderItems=new Handler(renderItems.bind());
         _changeCells=new Handler(changeCells.bind());
     }
@@ -90,7 +91,6 @@ class List extends Box implements IRender implements IItem {
     private function set_itemRender(value:Dynamic):Dynamic {
         _itemRender = value;
         callLater(_changeCells);
-        array=[{text:"1"},{text:"2"},{text:"3"},{text:"4"},{text:"5"},{text:"6"},{text:"7"},{text:"8"},{text:"9"},{text:"10"},{text:"11"},{text:"12"},{text:"13"}];
         return _itemRender;
     }
     /**X方向单元格数量*/
@@ -165,7 +165,6 @@ class List extends Box implements IRender implements IItem {
             var listWidth:Float = Math.isNaN(_width) ? (cellWidth * repeatX - _spaceX) : _width;
             var listHeight:Float = Math.isNaN(_height) ? (cellHeight * repeatY - _spaceY) : _height;
             _cellSize = _isVerticalLayout ? cellHeight : cellWidth;
-
             if (_isVerticalLayout && _scrollBar!=null) {
                 _scrollBar.height = listHeight;
             } else if (!_isVerticalLayout && _scrollBar!=null) {
@@ -178,6 +177,8 @@ class List extends Box implements IRender implements IItem {
             for (k in 0...numY) {
                 for (l in 0...numX) {
                     cell = createItem();
+                    cell.mouseEnabled=true;
+                    cell.mouseChildren=true;
                     cell.x = (_isVerticalLayout ? l : k) * (_spaceX + cell.width);
                     cell.y = (_isVerticalLayout ? k : l) * (_spaceY + cell.height);
                     cell.name = "item" + (k * numX + l);
@@ -285,6 +286,7 @@ class List extends Box implements IRender implements IItem {
     }
     private function onScrollBarChange(e:Event):Void {
         if(!_scrollBar.visible)return;
+
         exeCallLater(_changeCells);
         var rect:Rectangle = _content.scrollRect;
         var scrollValue:Float = _scrollBar.value;

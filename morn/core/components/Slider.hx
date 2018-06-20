@@ -203,7 +203,8 @@ class Slider extends Component {
     private function set_value(num:Float):Float {
         num=Std.parseFloat(Std.string(num));
         if (_value != num) {
-            _value = num;
+            _value = num<min?min:_value;
+            _value = num>max?max:_value;
             //callLater(changeValue);
             //callLater(sendChangeEvent);
             changeValue();

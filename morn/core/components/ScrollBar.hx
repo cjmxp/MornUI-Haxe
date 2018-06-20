@@ -84,9 +84,9 @@ class ScrollBar extends Component {
 
     private function slide(isUp:Bool):Void {
         if (isUp) {
-            value -= _scrollSize;
+            value =  value - _scrollSize;
         } else {
-            value += _scrollSize;
+            value =  value + _scrollSize;
         }
     }
     private function onStageMouseUp(e:MouseEvent):Void {
@@ -333,7 +333,7 @@ class ScrollBar extends Component {
         if (Math.abs(_lastOffset) >= 1) {
             _lastPoint.x = App.stage.mouseX;
             _lastPoint.y = App.stage.mouseY;
-            value -= _lastOffset;
+            value = value - _lastOffset;
         }
     }
     private function onStageMouseUp2(e:MouseEvent):Void {
@@ -347,14 +347,14 @@ class ScrollBar extends Component {
     }
     private function tweenMove():Void {
         _lastOffset = _lastOffset * 0.92;
-        value -= _lastOffset;
+        value = value -_lastOffset;
         if (Math.abs(_lastOffset) < 0.5) {
             App.timer.clearTimer(tweenMove);
         }
     }
 
     private function onMouseWheel(e:MouseEvent):Void {
-        value += (e.delta < 0 ? 3 : -3) * _scrollSize;
+        value = value + (e.delta < 0 ? 3 : -3) * _scrollSize;
         if (value < max && value > min) {
             e.stopPropagation();
         }
