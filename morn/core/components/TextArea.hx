@@ -148,6 +148,11 @@ class TextArea extends TextInput {
             }
         }
     }
+    override private function changeText():Void {
+        super.changeText();
+        if(_textField.scrollV==_textField.maxScrollV-1)_textField.scrollV=_textField.maxScrollV;
+        changeScroll();
+    }
     private function changeScroll():Void {
         var vShow:Bool = _vScrollBar!=null && _textField.maxScrollV > 1?true:false;
         var hShow:Bool = _hScrollBar!=null && _textField.maxScrollH > 0?true:false;

@@ -628,7 +628,7 @@ class Component extends Sprite implements IComponent {
     private function resetPosition():Void {
         if (parent != null) {
             if (!Math.isNaN(_centerX)) {
-                x = (parent.width - displayWidth) * 0.5 + _centerX;
+                x = Std.int((parent.width - displayWidth) * 0.5 + _centerX);
             } else if (!Math.isNaN(_left)) {
                 x = _left;
                 if (!Math.isNaN(_right)) {
@@ -638,7 +638,7 @@ class Component extends Sprite implements IComponent {
                 x = parent.width - displayWidth - _right;
             }
             if (!Math.isNaN(_centerY)) {
-                y = (parent.height - displayHeight) * 0.5 + _centerY;
+                y = Std.int((parent.height - displayHeight) * 0.5 + _centerY);
             } else if (!Math.isNaN(_top)) {
                 y = _top;
                 if (!Math.isNaN(_bottom)) {

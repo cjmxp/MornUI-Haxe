@@ -28,16 +28,13 @@ class Dialog extends View{
     }
     /**默认按钮处理*/
     private function onClick(e:MouseEvent):Void {
-        var btn:Button = cast(e.target,Button);
-        if (btn!=null) {
-            switch (btn.name) {
-                case CLOSE:
-                case CANCEL:
-                case SURE:
-                case NO:
-                case OK:
-                case YES:
-                    close(btn.name);
+        if(Std.is(e.target,Button)){
+            var btn:Button = cast(e.target,Button);
+            if (btn!=null) {
+                switch (btn.name) {
+                    case CLOSE | CANCEL | SURE | NO | OK | YES:
+                        close(btn.name);
+                }
             }
         }
     }
